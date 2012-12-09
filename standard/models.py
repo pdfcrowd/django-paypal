@@ -244,7 +244,9 @@ class PayPalStandardBase(models.Model):
 
     def initialize(self, request):
         """Store the data we'll need to make the postback from the request object."""
-        self.query = getattr(request, request.method).urlencode()
+        assert request.method == 'POST'
+        # store the original payload
+        self.query = request.raw_post_data # deprecated in 1.4, new name is "body"
         self.ipaddress = request.META.get('REMOTE_ADDR', '')
 
     def send_signals(self):
