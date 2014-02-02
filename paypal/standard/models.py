@@ -215,8 +215,8 @@ class PayPalStandardBase(models.Model):
                     self.set_flag("Invalid payment_status. (%s)" % self.payment_status)
                 if duplicate_txn_id(self):
                     self.set_flag("Duplicate txn_id. (%s)" % self.txn_id)
-                if self.receiver_email not in RECEIVER_EMAIL.split(';'):
-                    self.set_flag("Invalid receiver_email. (%s)" % self.receiver_email)
+                # if self.receiver_email not in RECEIVER_EMAIL.split(';'):
+                #     self.set_flag("Invalid receiver_email. (%s)" % self.receiver_email)
                 if callable(item_check_callable):
                     flag, reason = item_check_callable(self)
                     if flag:
