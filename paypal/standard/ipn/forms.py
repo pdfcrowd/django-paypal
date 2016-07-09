@@ -12,5 +12,6 @@ class PayPalIPNForm(PayPalStandardBaseForm):
     https://developer.paypal.com/us/cgi-bin/devscr?cmd=_tools-session
     """
     class Meta:
+        fields = "__all__"
         model = PayPalIPN
 
